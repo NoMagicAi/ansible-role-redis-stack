@@ -1,5 +1,8 @@
 ---
-__redis_package: redis-server
-redis_daemon: redis-server
+__redis_package: redis-stack-server
+redis_daemon: redis-stack-server
 redis_conf_path: /etc/redis/redis.conf
 redis_conf_mode: 0640
+redis_keyring_path: /usr/share/keyrings/redis-archive-keyring.gpg
+redis_packages_repo: deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main
+redis_packages_gpg_url: https://packages.redis.io/gpg

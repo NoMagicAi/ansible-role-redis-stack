@@ -1,4 +1,18 @@
 ---
+- name: import the redis archive public key
+  apt_key:
+    url: "{{ redis_packages_gpg_url }}"
+    state: present
+    keyring: "{{ redis_keyring_path }}"
+  become: true
+
+- name: add the redis archive uri as a package source
+  apt_repository:
+    repo: "{{ redis_packages_repo }}"
+    state: present
+    filename: "{{ __redis_package }}"
+  become: true
+
 # Variable setup.
 - name: Include OS-specific variables.
   include_vars: "{{ ansible_os_family }}.yml"
